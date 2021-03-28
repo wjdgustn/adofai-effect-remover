@@ -1,0 +1,23 @@
+{
+  "name": "adofai-effect-remover",
+  "version": "1.0.0",
+  "description": "ADOFAI level effect remover.",
+  "main": "cli.js",
+  "scripts": {
+    "test": "node cli.js",
+    "build": "npx pkg cli.js"
+  },
+  "author": "Hyonsu",
+  "license": "AGPL-3.0-or-later",
+  "devDependencies": {
+    "pkg": "^4.5.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wjdgustn/adofai-effect-remover.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wjdgustn/adofai-effect-remover/issues"
+  },
+  "homepage": "https://github.com/wjdgustn/adofai-effect-remover#readme"
+}
