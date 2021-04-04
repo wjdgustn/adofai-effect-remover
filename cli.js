@@ -25,7 +25,7 @@ rl.on('line', line => {
         process.exit(0);
     }
 
-    const allowed = [ 'SetSpeed' , 'Twirl' , 'SetHitsound' ];
+    const allowed = [ 'SetSpeed' , 'Twirl' , 'SetHitsound' , 'Checkpoint' ];
 
     const adofai = utils.ADOFAIParser(fs.readFileSync(input[0]));
     adofai.actions = adofai.actions.filter(e => allowed.includes(e.eventType));
