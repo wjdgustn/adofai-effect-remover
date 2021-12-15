@@ -38,6 +38,7 @@ rl.on('line', line => {
     adofai.settings.trackAnimation = 'None';
     adofai.settings.trackDisappearAnimation = 'None';
     adofai.settings.bgImage = '';
+    adofai.settings.backgroundColor = '000000';
 
     fs.writeFileSync('./noeffect.adofai', JSON.stringify(adofai, null, 2));
 });
