@@ -1,6 +1,6 @@
 {
   "name": "adofai-effect-remover",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "ADOFAI level effect remover.",
   "main": "cli.js",
   "scripts": {
