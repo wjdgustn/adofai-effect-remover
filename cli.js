@@ -25,13 +25,19 @@ rl.on('line', line => {
         process.exit(0);
     }
 
-    const allowed = [ 'SetSpeed' , 'Twirl' , 'SetHitsound' , 'Checkpoint' ];
+    const allowed = [ 'SetSpeed' , 'Twirl' ];
 
     const adofai = utils.ADOFAIParser(fs.readFileSync(input[0]));
     adofai.actions = adofai.actions.filter(e => allowed.includes(e.eventType));
     adofai.settings.relativeTo = 'Player';
     adofai.settings.zoom = 150;
     adofai.settings.position = [ 0 , 0 ];
+    adofai.settings.trackColor = 'debb7b';
+    adofai.settings.trackColorType = 'Single';
+    adofai.settings.trackStyle = 'Standard';
+    adofai.settings.trackAnimation = 'None';
+    adofai.settings.trackDisappearAnimation = 'None';
+    adofai.settings.bgImage = '';
 
     fs.writeFileSync('./noeffect.adofai', JSON.stringify(adofai, null, 2));
 });
