@@ -2,6 +2,7 @@ const readline = require('readline');
 const fs = require('fs');
 
 const utils = require('./utils');
+const { inputs } = require('./cli_input.json');
 
 const rl = readline.createInterface({
     input: process.stdin,
@@ -10,22 +11,20 @@ const rl = readline.createInterface({
 
 const input = [];
 
-process.stdout.write('이펙 삭제할 맵 파일 이름 입력(확장자까지) : ');
+process.stdout.write(inputs[0]);
 
 rl.on('line', line => {
     input.push(line);
-    switch(input.length) {
-        case 1:
-            rl.close();
-            break;
-    }
+    if(input.length < inputs.length) process.stdout.write(inputs[input.length]);
+    else rl.close();
 }).on('close', () => {
-    if(input.length < 1) {
+    if(input.length < 2) {
         console.log('\n\n변환을 취소합니다.');
         process.exit(0);
     }
 
     const allowed = [ 'SetSpeed' , 'Twirl' ];
+    if(input[1]) allowed.push(...input[1].split(',').map(a => a.trim()));
 
     const adofai = utils.ADOFAIParser(fs.readFileSync(input[0]));
     adofai.actions = adofai.actions.filter(e => allowed.includes(e.eventType));
@@ -39,6 +38,7 @@ rl.on('line', line => {
     adofai.settings.trackDisappearAnimation = 'None';
     adofai.settings.bgImage = '';
     adofai.settings.backgroundColor = '000000';
+    adofai.settings.showDefaultBGIfNoImage = 'Enabled';
 
     fs.writeFileSync('./noeffect.adofai', JSON.stringify(adofai, null, 2));
 });
